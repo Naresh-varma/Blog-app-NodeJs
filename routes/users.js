@@ -19,10 +19,10 @@ router.post('/createComment', checkAuth, commentController.createComment);
 
 router.post('/editBlog', checkAdmin, blogController.editBlog);
 
-//router.get('/getAllBlogs', blogController.getAllBlogs);
-router.get('/getAllBlogs', blogController.getAllElasticBlogs);
+router.get('/getAllBlogs', blogController.getAllBlogs);
+// router.get('/getAllBlogs', blogController.getAllElasticBlogs);
 
-//router.get('/blog/:blogId', blogController.getBlog);
-router.get('/blog/:blogId', blogController.getElasticBlog);
+router.get('/blog/:blogId', blogController.getBlog);
+// router.get('/blog/:blogId', blogController.getElasticBlog);
 
 module.exports = router;

@@ -16,63 +16,26 @@ exports.createBlog = (req, res, next) => {
           msg : "Error occured on server side",
           err : err
         })
-      }else{
-		console.log(JSON.stringify(blog));
-		elastic.index_Blog(blog, (err, result) => {
-			if(err){
-			  console.log('error' + JSON.stringify(err));
-			}else{
-				console.log('Success' + JSON.stringify(result));
-				res.status(200).json({
-					msg : "hey found the blog in do while",
-					blog: {
-						_id: result._id,
-					}
-				})
-			  	//search Elastic Search for the indexed blog
-				// let found = false;
-				// let i = 1;
-				// function fetchFromES () {
-				// 	function callbackES(){
-				// 		if (!found) {
-				// 			console.log('Here in callback.');
-				// 			return fetchFromES();
-				// 		}
-				// 		res.status(200).json({
-				// 			msg : "hey found the blog in do while",
-				// 			blog: {
-				// 				_id: result._id,
-				// 			}
-				// 		})
-				// 	};
-				// 	elasticClient.search(
-				// 		{
-				// 			index : 'blog',
-				// 			type : 'blog',
-				// 			body: {
-				// 				  query: {
-				// 					match: { "_id": result._id }
-				// 				}
-				// 			}
-				// 		}, (err, resul) => {
-				// 			console.log('I am here!', i++);
-				// 			if(err){
-				// 					console.log(err);
-				// 					res.status(500).json(err);
-				// 					callbackES();
-				// 			}else{
-				// 				if(resul.hits.total >= 1){
-				// 					found = true;
-				// 				}
-				// 				callbackES();
-				// 			}  
-				// 		}
-				// 	);
-				// }			
-				//fetchFromES();
 			}
-		});
-      }
+			return res.status(200).json({blog});
+    //   }else{
+		// console.log(JSON.stringify(blog));
+		// // elastic.index_Blog(blog, (err, result) => {
+		// // 	if(err){
+		// // 	  console.log('error' + JSON.stringify(err));
+		// // 		return res.status(500).json({err});
+		// // 	}else{
+		// // 		console.log('Success' + JSON.stringify(result));
+				
+		// // 		return res.status(200).json({
+		// // 			msg : "hey found the blog in do while",
+		// // 			blog: {
+		// // 				_id: result._id,
+		// // 			}
+		// // 		})
+		// // 	}
+		// // });
+    //   }
     })
 };
 exports.editBlog = (req, res, next) => {

@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 exports.signUp = (req, res, next) => {
+    /*
+      
+    */
     bcrypt.hash(req.body.password, 10, (err, encrptedpwd) => {
       if(err){
         console.log('Problem in hashing the password');
