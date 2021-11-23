@@ -8,7 +8,7 @@ const elasticClient = require('../elastic-search/connect-elastic');
 exports.createComment = (req, res, next) => {
     const comment = new Comment({
       _id : new mongoose.Types.ObjectId,
-      user_id : req.data.user_id,
+      user_id : req.body.user_id,
       blog_id : req.body.blog_id,
       description : req.body.description
     });
